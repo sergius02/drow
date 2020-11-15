@@ -1,0 +1,62 @@
+<div class="monster-card">
+    <div class="row">
+        <div class="col-12">
+            <h3>{{ monster.name }}</h3>
+            <small>{{ monster.type | titlecase }} {{ monster.size }}, {{ monster.alignment }}</small>
+        </div>
+    </div>
+    <hr>
+    <div class="col-12">
+        <strong><i class="fas fa-shield-alt"></i> Armor class: </strong>{{ monster.armor_class }}
+    </div>
+    <div class="col-12">
+        <strong><i class="fas fa-heart"></i> Hit points: </strong>{{ monster.hit_points }}
+    </div>
+    <div class="col-12">
+        <strong><i class="fas fa-tachometer-alt"></i> Speed: </strong>{{ monster?.speed.walk }} (Walk)
+        <span *ngIf="monster.speed.swim">, {{ monster.speed.swim }} (Swiming)</span>
+    </div>
+    <hr>
+    <div class="row monster-stats-columns">
+        <div class="col-2"><strong>STR</strong></div>
+        <div class="col-2"><strong>DEX</strong></div>
+        <div class="col-2"><strong>CON</strong></div>
+        <div class="col-2"><strong>INT</strong></div>
+        <div class="col-2"><strong>WIS</strong></div>
+        <div class="col-2"><strong>CHA</strong></div>
+    </div>
+    <div class="row monster-stats-columns">
+        <div class="col-2">{{ monster.strength }}</div>
+        <div class="col-2">{{ monster.dexterity }}</div>
+        <div class="col-2">{{ monster.constitution }}</div>
+        <div class="col-2">{{ monster.intelligence }}</div>
+        <div class="col-2">{{ monster.wisdom }}</div>
+        <div class="col-2">{{ monster.charisma }}</div>
+    </div>
+    <hr>
+    <div class="col-12">
+        <strong><i class="far fa-eye"></i> Senses: </strong>
+        <ul>
+            <li *ngIf="monster.senses.blindsight">Blindsight {{ monster.senses.blindsight }}</li>
+            <li *ngIf="monster.senses.darkvision">Dark vision {{ monster.senses.darkvision }}</li>
+            <li *ngIf="monster.senses.passive_perception">Passive perception {{ monster.senses.passive_perception }}</li>
+        </ul>
+    </div>
+    <div class="col-12">
+        <strong><i class="fas fa-globe"></i> Languages: </strong>{{ monster.languages }}
+    </div>
+    <div class="col-12">
+        <strong><i class="fas fa-fist-raised"></i> Challenge rating: </strong>{{ monster.challenge_rating | challengeRating }}
+    </div>
+    <hr>
+    <div class="col-12" *ngFor="let ability of monster.special_abilities">
+        <strong>{{ ability.name | firstCharUpper }}: </strong>
+        {{ ability.desc | firstCharUpper}}
+    </div>
+    <h5 class="monster-actions-title">Actions</h5>
+    <hr>
+    <div class="col-12" *ngFor="let action of monster.actions">
+        <strong>{{ action.name | firstCharUpper }}: </strong>
+        {{ action.desc | firstCharUpper}}
+    </div>
+</div>

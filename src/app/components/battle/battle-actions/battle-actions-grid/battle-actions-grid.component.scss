@@ -1,0 +1,23 @@
+$pink: #f09aff;
+$textDark: #1f1f1f;
+
+.card {
+  background-color: #2d2d2d;
+  margin-top: 15px;
+}
+
+.btn-close.btn-close-white {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.btn.btn-primary {
+  background-color: $pink;
+  border-color: $pink;
+  color: $textDark;
+}
+
+strong {
+  color: $pink;
+}

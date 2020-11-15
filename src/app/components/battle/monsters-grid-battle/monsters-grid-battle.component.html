@@ -1,0 +1,159 @@
+<form #addMonsterForm="ngForm" (ngSubmit)="addMonster()">
+    <div class="row mb-5">
+        <div class="col-md-12 col-lg-7 mt-3 mb-3">
+            <label for="addMonster">
+              <i class="fas fa-signature"></i>
+              Name
+            </label>
+            <div class="col">
+                <input
+                    [disabled]="monsterList == null"
+                    [(ngModel)]="monsterName"
+                    (input)="suggest()"
+                    required
+                    name="monsterName"
+                    type="text"
+                    id="addMonster"
+                    class="form-control col-12"
+                    aria-describedby="addMonster"
+                    autocomplete="off"
+                    placeholder="Adult black dragon"/>
+                <div
+                    class="col-12"
+                    id="loading-monster-list"
+                    *ngIf="monsterList == null">
+                    <span id="loading-monster-list-text">Loading monster list, please wait...</span>
+                    <span class="spinner-border spinner-border-sm" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </span>
+                </div>
+                <div
+                    class="list-group col-12" id="suggestions-monster-list"
+                    *ngIf="monstersSuggestions.length > 0">
+                    <a
+                      (click)="fillMonsterNameField(monsterReference)"
+                      class="list-group-item list-group-item-action"
+                      *ngFor="let monsterReference of monstersSuggestions">
+                      {{ monsterReference.name }}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-lg-3 mt-3 mb-3">
+          <label for="monsterInitiative">
+            <i class="fas fa-dice-d20"></i>
+            Initiative
+          </label>
+          <div class="input-group">
+            <input
+              [disabled]="monsterList == null"
+              [(ngModel)]="monsterInitiative"
+              required
+              name="monsterInitiative"
+              type="number"
+              id="addMonsterInitiative"
+              class="form-control"
+              aria-describedby="addMonsterInitiative"
+              placeholder="Initiative"
+              (keyup.enter)="addMonster()"/>
+            <button
+              (click)="generateRandomInitiative()"
+              type="button"
+              class="btn btn-primary btn-sm">
+              <i class="fas fa-redo"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-2 mt-3 mb-3">
+            <button
+              type="submit"
+              class="btn btn-primary addMonster-submit-button"
+              [disabled]="!addMonsterForm.form.valid">
+              <i class="fas fa-plus"></i>
+              <span class="d-block d-md-none">Add</span>
+            </button>
+        </div>
+    </div>
+</form>
+<div *ngIf="monsters">
+    <div class="row">
+        <ul class="list-group battle-list-monsters">
+            <li
+              class="shadow list-group-item bg-dark"
+              *ngFor="let monster of monsters; let monsterIndex = index">
+              <h5>{{ monster.name }}</h5>
+              <div>
+                <i class="fas fa-fist-raised"></i>
+                Challenge rating:
+                <span [class]="getChallengeBadgeColor(monster.monster.challenge_rating)">
+                  {{ monster.monster.challenge_rating | challengeRating }}
+                </span>
+              </div>
+              <div>
+                <i class="fas fa-heart"></i>
+                Hit points: {{ monster.hitPoints }}
+              </div>
+              <div>
+                <i class="fas fa-dice-d20"></i>
+                Initiative: {{ monster.initiative }}
+              </div>
+              <button
+                (click)="deleteMonster(monster)"
+                type="button"
+                class="btn-close btn-close-white float-right"
+                aria-label="Close"></button>
+              <button
+                  id="button-monster-list-abilities"
+                  class="btn btn-dark btn-block"
+                  type="button"
+                  data-toggle="collapse"
+                  [attr.data-target]="'#collapse' + monster.monster.index + monsterIndex"
+                  aria-expanded="false"
+                  [attr.aria-controls]="'collapseExample' + monster.monster.index + monsterIndex">
+                  Show monster abilities
+              </button>
+              <div [attr.id]="'collapse' + monster.monster.index + monsterIndex" class="collapse">
+                  <div class="accordion" id="battle-monster-actions">
+                      <div class="card" *ngFor="let action of monster.monster.actions; let acionIndex = index">
+                          <div class="card-header p-0" id="headingOne">
+                              <div class="mb-0">
+                                  <button
+                                      class="btn btn-dark btn-block text-left p-3 rounded-0"
+                                      type="button"
+                                      data-toggle="collapse"
+                                      [attr.data-target]="'#action-collapse' + monster.monster.index + acionIndex"
+                                      aria-expanded="true"
+                                      [attr.aria-controls]="'action-collapse' + monster.monster.index + acionIndex">
+                                      <h6>{{ action.name }}</h6>
+                                      <span>
+                                          <small>(Click to show more)</small>
+                                      </span>
+                                  </button>
+                              </div>
+                          </div>
+                          <div
+                              [attr.id]="'action-collapse' + monster.monster.index + acionIndex"
+                              class="collapse"
+                              aria-labelledby="headingOne"
+                              data-parent="#battle-monster-actions">
+                              <div class="card-body">
+                                  {{ action.desc }}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="row" *ngIf="monsters.length > 0">
+        <div class="col button-party">
+            <button
+                (click)="deleteEnemies()"
+                type="button"
+                class="btn btn-outline-danger">
+                Delete party
+            </button>
+        </div>
+    </div>
+</div>

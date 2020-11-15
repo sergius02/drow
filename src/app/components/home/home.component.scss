@@ -1,0 +1,26 @@
+$pink: #f09aff;
+$textDark: #1f1f1f;
+
+.home-welcome-container {
+    background-color: #2a2aa2 !important;
+    width: 100% !important;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 55px;
+    box-shadow: 2px 2px 10px 0px black;
+}
+
+.input-group {
+  display: block;
+}
+
+.btn-primary {
+  background-color: $pink;
+  border-color: $pink;
+  color: $textDark;
+}
+
+#logo-home {
+  max-width: 100px;
+}

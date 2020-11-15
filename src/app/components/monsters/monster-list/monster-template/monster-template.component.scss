@@ -1,0 +1,27 @@
+$pink: #f09aff;
+
+.monster-card {
+    background-color: #2d2d2d;
+    padding: 15px 25px;
+    border-radius: 25px;
+    box-shadow: 3px 3px 10px black;
+}
+
+.monster-card strong {
+    color: $pink;
+}
+
+.monster-stats-columns {
+    text-align: center;
+}
+
+.monster-actions-title {
+    margin-top: 35px;
+}
+
+.select-monster {
+    background: $pink;
+    border: none;
+    border-radius: 15px;
+    height: 100%;
+}

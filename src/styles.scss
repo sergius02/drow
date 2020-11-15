@@ -1,0 +1,26 @@
+$backgroundDark: #1f1f1f;
+$pink: #f09aff;
+$textDark: #1f1f1f;
+$textWhite: white;
+
+body {
+  background-color: $backgroundDark !important;
+  color: $textWhite !important;
+  overflow-x: hidden;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $pink #373737;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: #373737;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: $pink;
+}

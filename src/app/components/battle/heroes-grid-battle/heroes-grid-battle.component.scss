@@ -1,0 +1,36 @@
+$pink: #f09aff;
+$textDark: #1f1f1f;
+
+.btn-primary {
+  background-color: $pink;
+  border-color: $pink;
+  color: $textDark;
+}
+
+.button-party button {
+    margin-right: 10px;
+}
+
+.battle-list-heroes {
+    margin-bottom: 20px;
+}
+
+.battle-list-heroes .list-group-item {
+    margin: 0 15px;
+}
+
+.bg-dark {
+    background-color: #2d2d2d !important;
+}
+
+.battle-list-heroes .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.addhero-submit-button {
+  position: relative;
+  bottom: -23px;
+  width: 100%;
+}

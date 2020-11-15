@@ -1,0 +1,81 @@
+<div *ngIf="!fightStarted">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-6 battle-left-side">
+          <div class="col-12 text-center">
+            <h1>Enemies</h1>
+            <hr>
+          </div>
+            <app-monsters-grid-battle
+                [areEnemiesSelected]="areEnemiesSelected"
+                [monsters]="monsters"
+                (monstersChanged)="monstersChangedHandler($event)"></app-monsters-grid-battle>
+          <hr class="col-12">
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-6 battle-right-side">
+          <div class="col-12 text-center">
+            <h1>Heroes</h1>
+            <hr>
+          </div>
+            <app-heroes-grid-battle
+                [isPartyCreated]="isPartySaved"
+                [heroes]="heroes"
+                (partyChanged)="partyChangedHandler($event)"></app-heroes-grid-battle>
+          <hr class="col-12">
+        </div>
+        <div class="col-12">
+            <button
+                [disabled]="buttonStartDisabled"
+                (click)="startFight()"
+                type="button"
+                class="btn btn-primary btn-lg btn-start-fight">Start!</button>
+        </div>
+    </div>
+</div>
+<div
+  *ngIf="battleIsFinish"
+  class="alert alert-primary" role="alert">
+  <h4 class="alert-heading">Battle is over!</h4>
+  <p>If you want to play another battle, just reload the page</p>
+</div>
+<div style="position: absolute; top: 70px;left: 15px;">
+  <ng-template #monsterBattleDocRef></ng-template>
+</div>
+<div *ngIf="fightStarted">
+    <div class="row">
+        <div class="col-xs-12 col-lg-3 mb-5">
+            <ul class="list-group">
+                <li
+                  *ngFor="let participant of allParticipants"
+                  class="list-group-item"
+                  [class.list-group-item-danger]="participant.participantType === 'enemy'">
+                  <i class="fas fa-info-circle"
+                    *ngIf="participant.participantType === 'enemy'"
+                    (click)="openMonsterDoc(participant)">
+                  </i>
+                  {{ participant.name }}
+                  <i
+                    *ngIf="participant.isDead"
+                    class="fas fa-skull-crossbones"></i>
+                  <div
+                    *ngIf="!participant.isDead"
+                    class="progress">
+                    <div
+                      class="progress-bar"
+                      role="progressbar"
+                      [ngStyle]="{'width': (participant.currentHitPoints/participant.hitPoints)*100 + '%'}">
+                      {{ participant.currentHitPoints }}/{{ participant.hitPoints }}
+                    </div>
+                  </div>
+                </li>
+              </ul>
+        </div>
+        <div class="col-xs-12 col-lg-9">
+            <app-battle-actions
+              [battleParticipants]="allParticipants"
+              (battleFinishChanged)="battleFinishChangedHandler($event)"
+              (participantsChanged)="participantsChangedHandler($event)"></app-battle-actions>
+        </div>
+    </div>
+</div>

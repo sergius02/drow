@@ -1,0 +1,86 @@
+$pink: #f09aff;
+$textDark: #1f1f1f;
+
+.btn-primary {
+  background-color: $pink;
+  border-color: $pink;
+  color: $textDark;
+}
+
+.addMonster-submit-button {
+    position: relative;
+    bottom: -23px;
+  width: 100%;
+}
+
+#loading-monster-list {
+    margin-top: 10px;
+}
+
+#loading-monster-list .spinner-border {
+    margin-left: 10px;
+}
+
+#loading-monster-list-text {
+    position: relative;
+    top: 4px;
+}
+
+#suggestions-monster-list {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    background-color: white;
+    padding-top: 4px;
+    margin-top: -4px;
+}
+
+#suggestions-monster-list p {
+    margin-bottom: 0;
+}
+
+.button-party button {
+    margin-right: 10px;
+}
+
+.battle-list-monsters {
+    margin-bottom: 20px;
+}
+
+.battle-list-monsters .list-group-item {
+    margin: 0 15px;
+}
+
+.bg-dark {
+    background-color: #2d2d2d !important;
+}
+
+.battle-list-monsters .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#battle-monster-actions button,
+#battle-monster-actions .card {
+    background-color: #2d2d2d;
+    border-color: #1f1f1f;
+}
+
+#battle-monster-actions button {
+    color: $pink;
+    border: 1px solid #2d2d2d;
+}
+
+#battle-monster-actions button:focus {
+    box-shadow: none;
+}
+
+#battle-monster-actions .card-body {
+    background-color: #f09aff;
+    color: black;
+}
+
+#button-monster-list-abilities {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

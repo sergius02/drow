@@ -1,0 +1,35 @@
+<h1>Monsters</h1>
+<hr>
+<div style="position: absolute; top: 70px;left: 15px;">
+  <ng-template #monsterListDocRef></ng-template>
+</div>
+<div *ngIf="monstersReferences" class="row mb-5 mt-5">
+    <div class="col-12">
+        <div class="col-12">
+            <input
+                [(ngModel)]="searchMonsterRef"
+                type="search"
+                id="searchMonster"
+                class="form-control"
+                aria-describedby="searchMonster"
+                placeholder="Search monster"
+                autocomplete="off"/>
+        </div>
+        <div
+          class="monster-list row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div
+                (click)="openMonsterDoc(monsterReference)"
+                [class.active]="monsterReferenceSelected?.index === monsterReference.index"
+                class="animate__animated animate__fadeInUp animate__faster col mb-4"
+                *ngFor="let monsterReference of monstersReferences | monsterSearchPipe: searchMonsterRef">
+              <div class="card">
+                <div class="card-body">
+                  {{ monsterReference.name }}
+                  <i class="fas fa-info-circle"></i>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    </div>
+</div>

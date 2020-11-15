@@ -1,0 +1,104 @@
+<form #addHeroForm="ngForm" (ngSubmit)="addHero()">
+    <div class="row mb-5">
+        <div class="col-md-12 col-lg-4 mt-3 mb-3">
+            <label for="addHero">
+              <i class="fas fa-signature"></i>
+              Name
+            </label>
+            <input
+                [(ngModel)]="heroName"
+                required
+                name="heroName"
+                type="text"
+                id="addHero"
+                [class.is-invalid]="checkIfNameExist()"
+                class="form-control"
+                aria-describedby="addHero"
+                placeholder="Drizzt Do'Urden"/>
+        </div>
+        <div class="col-md-4 col-lg-3 mt-3 mb-3">
+            <label for="heroHitPoints">
+              <i class="fas fa-heart"></i>
+              Hit points
+            </label>
+            <input
+                [(ngModel)]="heroHitPoints"
+                required
+                autocomplete="off"
+                name="heroHitPoints"
+                type="number"
+                id="addHeroHitPoints"
+                class="form-control"
+                aria-describedby="addHeroHitPoints"
+                placeholder="HitPoints"/>
+        </div>
+        <div class="col-md-4 col-lg-3 mt-3 mb-3">
+          <label for="heroInitiative">
+            <i class="fas fa-dice-d20"></i>
+            Initiative
+          </label>
+          <div class="input-group">
+            <input
+              [(ngModel)]="heroInitiative"
+              required
+              autocomplete="off"
+              name="heroInitiative"
+              type="number"
+              id="addHeroInitiative"
+              class="form-control"
+              aria-describedby="addHeroInitiative"
+              placeholder="Initiative"
+            />
+            <button
+              (click)="generateRandomInitiative()"
+              type="button"
+              class="btn btn-primary btn-sm">
+              <i class="fas fa-redo"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-2 mt-3 mb-3">
+            <button
+                type="submit"
+                class="btn btn-primary addhero-submit-button"
+                [disabled]="!addHeroForm.form.valid">
+              <i class="fas fa-plus"></i>
+              <span class="d-block d-md-none">Add</span>
+            </button>
+        </div>
+    </div>
+</form>
+<div *ngIf="heroes">
+    <div class="row">
+        <ul class="list-group battle-list-heroes">
+            <li
+              class="shadow list-group-item bg-dark"
+              *ngFor="let hero of heroes">
+              <h5>{{ hero.name }}</h5>
+              <div>
+                <i class="fas fa-heart"></i>
+                Hit points: {{ hero.hitPoints }}
+              </div>
+              <div>
+                <i class="fas fa-dice-d20"></i>
+                Initiative: {{ hero.initiative }}
+              </div>
+              <button
+                (click)="deleteHero(hero)"
+                type="button"
+                class="btn-close btn-close-white float-right"
+                aria-label="Close"></button>
+            </li>
+        </ul>
+    </div>
+    <div class="row" *ngIf="heroes.length > 0">
+        <div class="col button-party">
+            <button
+                (click)="deleteParty()"
+                type="button"
+                class="btn btn-outline-danger">
+                Delete party
+            </button>
+        </div>
+    </div>
+</div>

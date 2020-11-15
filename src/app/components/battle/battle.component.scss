@@ -1,0 +1,53 @@
+$pink: #f09aff;
+$textDark: #1f1f1f;
+
+strong {
+    color: $pink;
+}
+
+.battle-left-side,
+.battle-right-side {
+    margin-bottom: 30px;
+}
+
+
+
+.btn-primary {
+    background-color: $pink;
+    border-color: $pink;
+    color: $textDark;
+}
+
+.btn-start-fight {
+    min-width: 100px;
+    max-width: 150px;
+    margin: 0px auto;
+    display: block;
+    margin-top: 5px;
+}
+
+.list-group a,
+.list-group li {
+    background-color: #2d2d2d;
+    border-color: #1f1f1f;
+    color: white;
+    cursor: pointer;
+}
+
+.list-group .list-group-item-danger {
+    background-color: #8e1723;
+    border-color: #8e1723;
+    color: white;
+    cursor: pointer;
+}
+
+.progress-bar {
+  background-color: $pink;
+  color: $textDark;
+}
+
+.alert-primary {
+  background-color: $pink;
+  border-color: $pink;
+  color: $textDark;
+}

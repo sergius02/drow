@@ -1,0 +1,29 @@
+$pink: #f09aff;
+
+.monster-list {
+  width: 100%;
+  height: 64vh;
+  overflow: auto;
+}
+
+.monster-list .card {
+  background-color: #2d2d2d;
+  border-color: #1f1f1f;
+  color: white;
+  cursor: pointer;
+}
+
+.monster-list .card:hover,
+.monster-list .card:active,
+.monster-list .card:focus,
+.monster-list .card.active {
+  background-color: #3c3c3c;
+  color: white;
+}
+
+#searchMonster {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 50px;
+}

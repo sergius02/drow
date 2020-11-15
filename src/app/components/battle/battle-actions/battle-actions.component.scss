@@ -1,0 +1,27 @@
+$pink: #f09aff;
+$textDark: #1f1f1f;
+
+.endturn-button{
+    float: right;
+}
+
+.card-action {
+    background-color: #2d2d2d;
+}
+
+.actions-list {
+  height: 69vh;
+  overflow: auto;
+}
+
+.btn.btn-primary {
+  background-color: $pink;
+  border-color: $pink;
+  color: $textDark;
+}
+
+.addAction-submit-button {
+  position: relative;
+  bottom: -22px;
+  width: 100%;
+}
