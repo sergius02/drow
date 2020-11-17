@@ -2,7 +2,16 @@ $pink: #f09aff;
 $textDark: #1f1f1f;
 
 .endturn-button{
-    float: right;
+  float: right;
+  margin-top: 10px;
+}
+
+.battle-turn-bottom-bar {
+  background-color: #2d2d2d;
+  padding: 10px 25px;
+  position: relative;
+  top: 30px;
+  border-radius: 5px;
 }
 
 .card-action {
@@ -10,8 +19,23 @@ $textDark: #1f1f1f;
 }
 
 .actions-list {
-  height: 69vh;
+  height: 18rem;
   overflow: auto;
+}
+
+@media (min-width: 768px) {
+  .actions-list {
+    height: 24rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .actions-list {
+    height: 34rem;
+  }
+}
+
+.fixed-bottom {
 }
 
 .btn.btn-primary {
