@@ -66,6 +66,14 @@ export class BattleComponent implements OnInit {
     this.allParticipants = this.allParticipants.concat(this.heroes);
     this.allParticipants  = this.allParticipants.concat(this.monsters);
     this.allParticipants.sort((a, b) => b.initiative - a.initiative);
+
+    if (this.fightStarted && !this.battleIsFinish) {
+      window.addEventListener('beforeunload', e => {
+        const confirmationMessage = 'Are you sure? Your battle will be lost!';
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+      });
+    }
   }
 
   participantsChangedHandler(participants: BattleParticipant[]): void {
